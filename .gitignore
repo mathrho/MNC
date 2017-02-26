@@ -32,3 +32,9 @@
 *.jpg
 *~
 .idea
+
+benchmark.tgz
+data/*
+output/*
+tmp
+caffe-mnc-orig
