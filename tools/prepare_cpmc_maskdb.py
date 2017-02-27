@@ -29,7 +29,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Prepare CPMC roidb')
     parser.add_argument('--input', dest='input_dir',
                         help='folder contain input mcg proposals',
-                        default='data/CUB_200_2011/MySegmentsMat/', type=str)
+                        default='data/CUB_200_2011/MySegmentsMat/CPMC_segms_sp_approx/', type=str)
     parser.add_argument('--output', dest='output_dir',
                         help='folder contain output roidb', required=True,
                         type=str)
