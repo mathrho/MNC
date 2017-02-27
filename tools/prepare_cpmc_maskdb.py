@@ -73,6 +73,11 @@ def process_roidb(file_start, file_end, db):
 
         for ind_proposal in xrange(num_proposal):
             #label = mcg_mask_label[ind_proposal][0][0]
+            if mcg_mask_label[:, ind_proposal].sum() == 0:
+                mcg_masks[ind_proposal, :, :] = np.zeros(mcg_superpixels.shape, dtype=np.bool)
+                mcg_boxes[ind_proposal, :] = np.zeros(4)
+                continue
+
             label = np.where(mcg_mask_label[:, ind_proposal] > 0)[0] + 1
             proposal = np.in1d(mcg_superpixels, label).reshape(mcg_superpixels.shape)
             [r, c] = np.where(proposal == 1)
