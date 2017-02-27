@@ -60,8 +60,6 @@ class FeatureWrapper(object):
             pass
         elif self.task_name == 'cfm':
             if os.path.exists(output_dir):
-                return
-            else:
                 self.get_cfm_result()
                 #cfm_boxes, cfm_masks = self.get_cfm_result()
                 #with open(det_file, 'wb') as f:
