@@ -187,6 +187,6 @@ class FeatureWrapper(object):
         res = {
             'D': np.transpose(res_feats)
         }
-        sio.savemat(os.path.join(output_dir, self.images[im_i]+'.m'), res)
+        sio.savemat(os.path.join(output_dir, self.images[im_i]+'.mat'), res)
 
         return res_feats
