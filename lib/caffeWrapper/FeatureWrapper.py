@@ -7,7 +7,7 @@
 
 import os
 import cPickle
-import scipy
+import scipy.io as sio
 import numpy as np
 import cv2
 
@@ -100,7 +100,7 @@ class FeatureWrapper(object):
     def cfm_network_forward(self, im_i):
         im = cv2.imread(os.path.join(self.image_path, self.images[im_i]+'.jpg'))
         roidb_cache = os.path.join('data/cache/cub_200_2011_cpmc_sp_approx_maskdb/', self.images[im_i] + '.mat')
-        roidb = scipy.io.loadmat(roidb_cache)
+        roidb = sio.loadmat(roidb_cache)
         boxes = roidb['boxes']
         #filter_keep = filter_small_boxes(boxes, min_size=16)
         #boxes = boxes[filter_keep, :]
