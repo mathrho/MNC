@@ -31,8 +31,10 @@ class FeatureWrapper(object):
         self.task_name = task_name
         
         #self.imdb = imdb
-        self.output_dir = os.path.join('output', 'cfm', 'cub_200_2011', 'CPMC_segms_sp_approx_'+self.net.name)
-        list_name = 'data/CUB_200_2011/ImageSets/Segmentation/traintest.txt'
+        #self.output_dir = os.path.join('output', 'cfm', 'cub_200_2011', 'CPMC_segms_sp_approx_'+self.net.name)
+        #list_name = 'data/CUB_200_2011/ImageSets/Segmentation/traintest.txt'
+        self.output_dir = os.path.join('output', 'cfm', 'cub_200_2011', 'ground_truth_sp_approx_'+self.net.name)
+        list_name = 'data/CUB_200_2011/ImageSets/Segmentation/train.txt'
         with open(list_name) as f:
             file_list = f.read().splitlines()
         # We define some class variables here to avoid defining them many times in every method
@@ -99,7 +101,8 @@ class FeatureWrapper(object):
 
     def cfm_network_forward(self, im_i):
         im = cv2.imread(os.path.join(self.image_path, self.images[im_i]+'.jpg'))
-        roidb_cache = os.path.join('data/cache/cub_200_2011_cpmc_sp_approx_maskdb/', self.images[im_i] + '.mat')
+        #roidb_cache = os.path.join('data/cache/cub_200_2011_cpmc_sp_approx_maskdb/', self.images[im_i] + '.mat')
+        roidb_cache = os.path.join('data/cache/cub_200_2011_gt_sp_approx_maskdb/', self.images[im_i] + '.mat')
         roidb = sio.loadmat(roidb_cache)
         boxes = roidb['boxes']
         #filter_keep = filter_small_boxes(boxes, min_size=16)

@@ -57,6 +57,8 @@ def process_roidb(file_start, file_end, db):
     for cnt in xrange(file_start, file_end):
         f = file_list[cnt]
         full_file = os.path.join(input_dir, f)
+        if ~os.path.exists(full_file):
+            continue
         output_cache = os.path.join(output_dir, f.split('.')[0] + '.mat')
         timer_tic = time.time()
         if os.path.exists(output_cache):
